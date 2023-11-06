@@ -1,0 +1,19 @@
+version: "3"
+services:
+  py:
+    build:
+      context: ./build
+
+    volumes:
+      - "./ChatGLM3:/app"
+    working_dir: /app
+    environment:
+      - TRANSFORMERS_CACHE=.cache
+    ports:
+      - 8501:8501
+    command:
+      - poetry
+      - run
+      - streamlit
+      - run
+      - web_demo2.py
